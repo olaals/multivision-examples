@@ -8,7 +8,7 @@ import bpy
 
 delete_all()
 init_cycles()
-bpy.ops.mesh.primitive_plane_add(scale=[3,3,3])
+bpy.ops.mesh.primitive_plane_add()
 
 t1 = ((0.3,0,0), R.from_euler('xyz', [0,0.1,0]))
 t2 = ((-0.3,0,0), R.from_euler('xyz', [0,-0.1,0]))
@@ -27,3 +27,5 @@ sc_dict = {
     }
 }
 ts = TemplateScanner("sfd", sc_dict, pose=((0,0,3), (0,0,0) ))
+rot = ts.get_rotation(from_to="c->p", return_type='sp')
+print(rot.as_euler('xyz'))
